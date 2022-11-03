@@ -10,6 +10,8 @@ Used car pricing Api is written by NestJS RESTful API.
 nest new used-car-pricing-api
 nest g module users
 nest g module reports
+nest g controller users
+nest g controller reports
 ```
 
 ## Running the app
