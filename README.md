@@ -8,6 +8,8 @@ Used car pricing Api is written by NestJS RESTful API.
 [Nest](https://github.com/nestjs/nest) is an MIT-licensed open source project.
 ```sh
 nest new used-car-pricing-api
+nest g module users
+nest g module reports
 ```
 
 ## Running the app
