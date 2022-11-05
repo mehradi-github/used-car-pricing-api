@@ -40,6 +40,21 @@ npm i @nestjs/typeorm typeorm sqlite3
 ```sh
 npm i class-validator class-transformer 
 ```
+## rest Clinet
+Create file requests.http
+```
+### Create a new user
+POST http://localhost:3000/auth/signup
+content-type: application/json
+
+{
+  "email": "test50@test.com",
+  "password": "12345"
+}
+```
+shortcut for execute request in requests.http : Ctrl+Alt+R(Cmd+Alt+R for macOS)
+then Ctrl+Shit+p sqlite> open Database or
+run query in -- SQLite.sql  by shortcut Ctrl+Shift+q(Cmd+Shift+q for macOS)
 
 ## Running the app
 
