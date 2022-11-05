@@ -12,9 +12,11 @@ import { IsEmail, IsString } from 'class-validator';
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
+
   @Column()
   @IsEmail()
   email: string;
+
   @Column()
   password: string;
 
