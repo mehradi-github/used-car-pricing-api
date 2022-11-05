@@ -19,6 +19,28 @@ nest g service reports
 ```sh
 npm i @nestjs/typeorm typeorm sqlite3 
 ```
+> app.module.ts
+```javascript 
+@Module({
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'sqlite',
+      database: 'db.sqlite',
+      entities: [User, Report],
+      synchronize: true,
+    }),
+    UsersModule,
+    ReportsModule,
+  ],
+  controllers: [AppController],
+  providers: [AppService],
+})
+```
+## Installing Validator
+```sh
+npm i class-validator class-transformer 
+```
+
 ## Running the app
 
 ```sh
