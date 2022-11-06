@@ -38,7 +38,7 @@ npm i @nestjs/typeorm typeorm sqlite3
 ```
 ## Installing Validator
 ```sh
-npm i class-validator class-transformer 
+npm i class-validator class-transformer cookie-session @types/cookie-session
 ```
 ## rest Clinet
 Create file requests.http
