@@ -55,6 +55,9 @@ content-type: application/json
 shortcut for execute request in requests.http : Ctrl+Alt+R(Cmd+Alt+R for macOS)
 then Ctrl+Shit+p sqlite> open Database or
 run query in -- SQLite.sql  by shortcut Ctrl+Shift+q(Cmd+Shift+q for macOS)
+### Snippets in Visual Studio Code
+[Code snippets](https://code.visualstudio.com/docs/editor/userdefinedsnippets) are templates that make it easier to enter repeating code patterns, such as loops or conditional-statements.
+User Snippets under File > Preferences (Code > Preferences on macOS)
 
 ## Running the app
 
