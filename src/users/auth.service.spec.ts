@@ -88,4 +88,10 @@ describe('AuthService', () => {
       expect(e.toString()).toMatch('bad password.');
     }
   });
+  it('returns a user if correct password is provided', async () => {
+    await authService.signup('asdf@asdf.com', 'mypassword');
+
+    const user = await authService.signin('asdf@asdf.com', 'mypassword');
+    expect(user).toBeDefined();
+  });
 });
