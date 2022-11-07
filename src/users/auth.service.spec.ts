@@ -71,4 +71,13 @@ describe('AuthService', () => {
       expect(e.toString()).toMatch('email in use');
     }
   });
+
+  it('throws if an invalid password is provided', async () => {
+    await authService.signup('test@test.com', 'pass1');
+    try {
+      await authService.signin('test@test.com', 'pass2');
+    } catch (e) {
+      expect(e.toString()).toMatch('bad password.');
+    }
+  });
 });
