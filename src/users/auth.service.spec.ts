@@ -80,4 +80,12 @@ describe('AuthService', () => {
       expect(e.toString()).toMatch('bad password.');
     }
   });
+
+  it('throws if signin is called with an unused email', async (done) => {
+    try {
+      await authService.signin('asdflkj@asdlfkj.com', 'passdflkj');
+    } catch (e) {
+      expect(e.toString()).toMatch('bad password.');
+    }
+  });
 });
