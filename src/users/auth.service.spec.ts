@@ -81,11 +81,11 @@ describe('AuthService', () => {
     }
   });
 
-  it('throws if signin is called with an unused email', async (done) => {
+  it('throws if signin is called with an unused email', async () => {
     try {
       await authService.signin('asdflkj@asdlfkj.com', 'passdflkj');
     } catch (e) {
-      expect(e.toString()).toMatch('bad password.');
+      expect(e.toString()).toMatch('user not found.');
     }
   });
   it('returns a user if correct password is provided', async () => {
