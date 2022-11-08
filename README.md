@@ -1,11 +1,17 @@
 # Used car pricing Api
-Used car pricing Api is written by NestJS RESTful API.
+Used car pricing Api is written by [NestJS](https://github.com/nestjs/nest) RESTful API.
 
-
-
+- [Used car pricing Api](#used-car-pricing-api)
+  - [Installation](#installation)
+  - [Installing Typeorm](#installing-typeorm)
+  - [Installing Validator](#installing-validator)
+  - [rest Clinet](#rest-clinet)
+    - [Snippets in Visual Studio Code](#snippets-in-visual-studio-code)
+  - [Specifying the Runtime Environment](#specifying-the-runtime-environment)
+  - [Running the app](#running-the-app)
+  - [Test](#test)
 
 ## Installation
-[Nest](https://github.com/nestjs/nest) is an MIT-licensed open source project.
 ```sh
 nest new used-car-pricing-api
 nest g module users
@@ -58,6 +64,63 @@ run query in -- SQLite.sql  by shortcut Ctrl+Shift+q(Cmd+Shift+q for macOS)
 ### Snippets in Visual Studio Code
 [Code snippets](https://code.visualstudio.com/docs/editor/userdefinedsnippets) are templates that make it easier to enter repeating code patterns, such as loops or conditional-statements.
 User Snippets under File > Preferences (Code > Preferences on macOS)
+
+## Specifying the Runtime Environment
+```sh
+npm i @nestjs/config cross-env
+```
+file: .env.development or .env.test
+```
+DB_NAME=db.sqlite
+COOKIE_KEY=alskdfjlkj
+```
+file: src> app.module.ts
+```ts
+...
+@Module({
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: `.env.${process.env.NODE_ENV}`,
+    }),
+    TypeOrmModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => {
+        return {
+          type: 'sqlite',
+          database: config.get<string>('DB_NAME'),
+          entities: [User, Report],
+          synchronize: true,
+        };
+      },
+    }),
+    // TypeOrmModule.forRoot({
+    //   type: 'sqlite',
+    //   database: 'db.sqlite',
+    //   entities: [User, Report],
+    //   synchronize: true,
+    // }),
+    UsersModule,
+    ReportsModule,
+  ],
+  controllers: [AppController],
+  providers: [
+    AppService,
+    {
+      provide: APP_PIPE,
+      useValue: new ValidationPipe({
+        whitelist: true,
+      }),
+    },
+  ],
+})
+...
+```
+file: package.json
+```js
+ "start:dev": "cross-env NODE_ENV=development nest start --watch",
+ "test:e2e": "cross-env NODE_ENV=test jest --config ./test/jest-e2e.json --maxWorkers=1",
+```
 
 ## Running the app
 
