@@ -69,4 +69,14 @@ describe('UsersController', () => {
       expect(e.toString()).toMatch('user not found');
     }
   });
+  it('signin updates session object and returns user', async () => {
+    const session = { userId: -10 };
+    const user = await controller.signin(
+      { email: 'test@test.com', password: 'test' },
+      session,
+    );
+
+    expect(user.id).toEqual(1);
+    expect(session.userId).toEqual(1);
+  });
 });
