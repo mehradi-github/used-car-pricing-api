@@ -8,6 +8,7 @@ Used car pricing Api is written by [NestJS](https://github.com/nestjs/nest) REST
   - [rest Clinet](#rest-clinet)
     - [Snippets in Visual Studio Code](#snippets-in-visual-studio-code)
   - [Specifying the Runtime Environment](#specifying-the-runtime-environment)
+  - [Installing the TypeORM CLI](#installing-the-typeorm-cli)
   - [Running the app](#running-the-app)
   - [Test](#test)
 
@@ -121,7 +122,23 @@ file: package.json
  "start:dev": "cross-env NODE_ENV=development nest start --watch",
  "test:e2e": "cross-env NODE_ENV=test jest --config ./test/jest-e2e.json --maxWorkers=1",
 ```
-
+## Installing the TypeORM CLI
+[Using CLI](https://typeorm.io/using-cli):
+```sh
+npm install ts-node --save-dev
+```
+file: package.json
+```json
+"scripts": {
+    ...
+    // "typeorm": "cross-env NODE_ENV=development node --require ts-node/register ./node_modules/typeorm/cli.js"
+    
+    "typeorm": "typeorm-ts-node-commonjs"
+}
+```
+```sh
+npm run typeorm migration:generate -- src/db/migrations/initial-schema -d src/db/data-source.ts
+```
 ## Running the app
 
 ```sh
