@@ -133,11 +133,15 @@ file: package.json
     ...
     // "typeorm": "cross-env NODE_ENV=development node --require ts-node/register ./node_modules/typeorm/cli.js"
     
-    "typeorm": "typeorm-ts-node-commonjs"
+    "typeorm": "typeorm-ts-node-commonjs",
+    "migration:generate": "cross-env NODE_ENV=development npm run typeorm migration:generate -- src/db/migrations/initial-schema -d src/db/data-source.ts",
+    "migration:run": "cross-env NODE_ENV=development npm run typeorm migration:run -- -d src/db/data-source.ts"
+  }
 }
 ```
 ```sh
-npm run typeorm migration:generate -- src/db/migrations/initial-schema -d src/db/data-source.ts
+npm run typeorm migration:generate 
+npm run typeorm migration:run
 ```
 ## Running the app
 

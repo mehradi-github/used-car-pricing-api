@@ -15,7 +15,7 @@ switch (process.env.NODE_ENV) {
       type: 'sqlite',
       database: 'db.sqlite',
       entities: ['**/*.entity.js'],
-      migrations: ['migrations/*.js'],
+      migrations: ['src/db/migrations/*.js'],
       synchronize: false,
     };
     break;
@@ -24,7 +24,7 @@ switch (process.env.NODE_ENV) {
       type: 'sqlite',
       database: 'test.sqlite',
       entities: ['**/*.entity.ts'],
-      migrations: ['migrations/*.js'],
+      migrations: ['src/db/migrations/*.ts'],
       synchronize: false,
       migrationsRun: true,
     };
@@ -34,7 +34,7 @@ switch (process.env.NODE_ENV) {
       type: 'postgres',
       url: process.env.DATABASE_URL,
       entities: ['**/*.entity.js'],
-      migrations: ['migrations/*.js'],
+      migrations: ['src/db/migrations/*.ts'],
       synchronize: false,
       migrationsRun: true,
       ssl: {
